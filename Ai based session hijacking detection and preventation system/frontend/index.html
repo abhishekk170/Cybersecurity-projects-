@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NovaBank - Online Banking Demo</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- =========================
+         LANDING / LOGIN PAGE
+    ========================== -->
+
+    <div class="auth-page" id="authPage">
+
+        <div class="auth-left">
+
+            <div class="brand">
+                <div class="brand-logo">N</div>
+
+                <div>
+                    <h2>NovaBank</h2>
+                    <span>Digital Banking</span>
+                </div>
+            </div>
+
+            <div class="hero-content">
+
+                <span class="tag">SMART • SIMPLE • SECURE</span>
+
+                <h1>
+                    Banking made
+                    <span>simple.</span>
+                </h1>
+
+                <p>
+                    A clean banking experience for managing your
+                    account, balance and transactions in one place.
+                </p>
+
+                <div class="hero-features">
+
+                    <div>
+                        <strong>24/7</strong>
+                        <span>Account access</span>
+                    </div>
+
+                    <div>
+                        <strong>Easy</strong>
+                        <span>Money management</span>
+                    </div>
+
+                    <div>
+                        <strong>Secure</strong>
+                        <span>Login sessions</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="auth-footer">
+                © 2026 NovaBank • Student Project Demo
+            </div>
+
+        </div>
+
+
+        <!-- AUTH CARD -->
+
+        <div class="auth-right">
+
+            <div class="auth-card">
+
+                <!-- LOGIN -->
+
+                <div class="auth-form" id="loginFormContainer">
+
+                    <div class="form-heading">
+                        <span class="mini-label">WELCOME BACK</span>
+
+                        <h2>Sign in</h2>
+
+                        <p>
+                            Login to access your NovaBank account.
+                        </p>
+                    </div>
+
+
+                    <form id="loginForm">
+
+                        <label>Username</label>
+
+                        <input
+                            type="text"
+                            id="loginUsername"
+                            placeholder="Enter your username"
+                            required
+                        >
+
+
+                        <label>Password</label>
+
+                        <input
+                            type="password"
+                            id="loginPassword"
+                            placeholder="Enter your password"
+                            required
+                        >
+
+
+                        <button type="submit" class="main-btn">
+                            Sign in
+                            <span>→</span>
+                        </button>
+
+                    </form>
+
+
+                    <div class="switch-form">
+                        Don't have an account?
+
+                        <button id="showRegister">
+                            Create account
+                        </button>
+                    </div>
+
+                </div>
+
+
+                <!-- REGISTER -->
+
+                <div class="auth-form hidden" id="registerFormContainer">
+
+                    <div class="form-heading">
+                        <span class="mini-label">NEW CUSTOMER</span>
+
+                        <h2>Create account</h2>
+
+                        <p>
+                            Register a demo account to continue.
+                        </p>
+                    </div>
+
+
+                    <form id="registerForm">
+
+                        <label>Full Name</label>
+
+                        <input
+                            type="text"
+                            id="registerName"
+                            placeholder="Enter your name"
+                            required
+                        >
+
+
+                        <label>Username</label>
+
+                        <input
+                            type="text"
+                            id="registerUsername"
+                            placeholder="Choose a username"
+                            required
+                        >
+
+
+                        <label>Password</label>
+
+                        <input
+                            type="password"
+                            id="registerPassword"
+                            placeholder="Create a password"
+                            required
+                        >
+
+
+                        <label>Confirm Password</label>
+
+                        <input
+                            type="password"
+                            id="confirmPassword"
+                            placeholder="Confirm your password"
+                            required
+                        >
+
+
+                        <button type="submit" class="main-btn">
+                            Create account
+                            <span>→</span>
+                        </button>
+
+                    </form>
+
+
+                    <div class="switch-form">
+                        Already have an account?
+
+                        <button id="showLogin">
+                            Sign in
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         BANKING DASHBOARD
+    ========================== -->
+
+    <div class="bank-app hidden" id="bankApp">
+
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar">
+
+            <div class="brand sidebar-brand">
+
+                <div class="brand-logo">
+                    N
+                </div>
+
+                <div>
+                    <h2>NovaBank</h2>
+                    <span>Digital Banking</span>
+                </div>
+
+            </div>
+
+
+            <nav>
+
+                <button class="nav-link active">
+                    <span>⌂</span>
+                    Overview
+                </button>
+
+                <button class="nav-link">
+                    <span>↔</span>
+                    Transfers
+                </button>
+
+                <button class="nav-link">
+                    <span>▣</span>
+                    Transactions
+                </button>
+
+                <button class="nav-link">
+                    <span>⚙</span>
+                    Settings
+                </button>
+
+            </nav>
+
+
+            <div class="sidebar-bottom">
+
+                <div class="support-box">
+
+                    <div class="support-icon">
+                        ?
+                    </div>
+
+                    <div>
+                        <strong>Need help?</strong>
+                        <span>Contact support</span>
+                    </div>
+
+                </div>
+
+
+                <button class="logout-btn" id="logoutBtn">
+                    <span>↪</span>
+                    Logout
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN -->
+
+        <main class="bank-main">
+
+
+            <!-- TOP BAR -->
+
+            <header class="topbar">
+
+                <div>
+
+                    <span class="mini-label">
+                        PERSONAL BANKING
+                    </span>
+
+                    <h1 id="welcomeText">
+                        Good morning
+                    </h1>
+
+                </div>
+
+
+                <div class="user-area">
+
+                    <div class="session-indicator">
+
+                        <span></span>
+
+                        Session active
+
+                    </div>
+
+
+                    <div class="user-avatar" id="userAvatar">
+                        U
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- BALANCE -->
+
+            <section class="balance-card">
+
+                <div class="balance-info">
+
+                    <span class="balance-label">
+                        TOTAL BALANCE
+                    </span>
+
+                    <h2 id="accountBalance">₹ 84,520.00</h2>
+
+                    <p>
+                        Available balance
+                    </p>
+
+                </div>
+
+
+                <div class="card-symbol">
+
+                    <div class="chip"></div>
+
+                    <span>NB</span>
+
+                </div>
+
+            </section>
+
+
+            <!-- QUICK ACTIONS -->
+
+            <section class="quick-section">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="mini-label">
+                            QUICK ACTIONS
+                        </span>
+
+                        <h2>Manage your money</h2>
+                    </div>
+
+                </div>
+
+
+                <div class="quick-grid">
+
+                    <button class="quick-card">
+
+                        <div class="quick-icon purple">
+                            ↗
+                        </div>
+
+                        <strong>Send Money</strong>
+
+                        <span>
+                            Transfer funds
+                        </span>
+
+                    </button>
+
+
+                    <button class="quick-card">
+
+                        <div class="quick-icon blue">
+                            ↓
+                        </div>
+
+                        <strong>Add Money</strong>
+
+                        <span>
+                            Add funds
+                        </span>
+
+                    </button>
+
+
+                    <button class="quick-card">
+
+                        <div class="quick-icon green">
+                            ◉
+                        </div>
+
+                        <strong>Pay Bills</strong>
+
+                        <span>
+                            Pay securely
+                        </span>
+
+                    </button>
+
+
+                    <button class="quick-card">
+
+                        <div class="quick-icon orange">
+                            ▤
+                        </div>
+
+                        <strong>Statements</strong>
+
+                        <span>
+                            View statements
+                        </span>
+
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- TRANSACTIONS -->
+
+            <section class="transactions-section">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <span class="mini-label">
+                            ACCOUNT ACTIVITY
+                        </span>
+
+                        <h2>Recent transactions</h2>
+
+                    </div>
+
+                    <button class="view-all">
+                        View all →
+                    </button>
+
+                </div>
+
+
+                <div class="transactions-card" id="transactionsList">
+
+                    <!--
+                        Populated dynamically by script.js from
+                        GET /api/transactions. Left empty here so the
+                        real backend data is the single source of truth.
+                    -->
+
+                </div>
+
+            </section>
+
+
+            <!-- SESSION INFORMATION -->
+
+            <section class="session-card">
+
+                <div>
+
+                    <span class="mini-label">
+                        CURRENT SESSION
+                    </span>
+
+                    <h3>Your banking session is active</h3>
+
+                    <p>
+                        You are currently signed in to NovaBank.
+                        Remember to log out when you are finished.
+                    </p>
+
+                </div>
+
+                <div class="session-status">
+
+                    <span></span>
+
+                    ACTIVE
+
+                </div>
+
+            </section>
+
+
+            <footer>
+
+                <span>
+                    NovaBank Student Project
+                </span>
+
+                <span>
+                    Demo banking environment
+                </span>
+
+            </footer>
+
+        </main>
+
+    </div>
+
+
+    <!-- TOAST -->
+
+    <div class="toast" id="toast">
+
+        <div class="toast-icon">
+            ✓
+        </div>
+
+        <div>
+            <strong id="toastTitle">
+                Success
+            </strong>
+
+            <span id="toastMessage">
+                Account created successfully.
+            </span>
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
