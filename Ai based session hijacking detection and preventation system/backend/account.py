@@ -5,7 +5,7 @@ NovaBank Demo Backend - Account routes
 from flask import Blueprint, jsonify, g
 
 import backend.models as models
-from services_session_ import require_auth
+from services.session_service import require_auth
 
 account_bp = Blueprint("account", __name__, url_prefix="/api/account")
 
