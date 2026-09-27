@@ -245,22 +245,29 @@
 
             <nav>
 
-                <button class="nav-link active">
+                <!--
+                    data-page connects each nav button to the matching
+                    #<page>Page view below. switchPage() in script.js
+                    reads this attribute, so no new markup is needed
+                    to add more pages later.
+                -->
+
+                <button class="nav-link active" data-page="overview">
                     <span>⌂</span>
                     Overview
                 </button>
 
-                <button class="nav-link">
+                <button class="nav-link" data-page="transfers">
                     <span>↔</span>
                     Transfers
                 </button>
 
-                <button class="nav-link">
+                <button class="nav-link" data-page="transactions">
                     <span>▣</span>
                     Transactions
                 </button>
 
-                <button class="nav-link">
+                <button class="nav-link" data-page="settings">
                     <span>⚙</span>
                     Settings
                 </button>
@@ -299,13 +306,13 @@
         <main class="bank-main">
 
 
-            <!-- TOP BAR -->
+            <!-- TOP BAR (shared across every page) -->
 
             <header class="topbar">
 
                 <div>
 
-                    <span class="mini-label">
+                    <span class="mini-label" id="topbarLabel">
                         PERSONAL BANKING
                     </span>
 
@@ -336,183 +343,470 @@
             </header>
 
 
-            <!-- BALANCE -->
+            <!-- =========================
+                 OVERVIEW PAGE
+            ========================== -->
 
-            <section class="balance-card">
+            <div class="page-view" id="overviewPage">
 
-                <div class="balance-info">
+                <!-- BALANCE -->
 
-                    <span class="balance-label">
-                        TOTAL BALANCE
-                    </span>
+                <section class="balance-card">
 
-                    <h2 id="accountBalance">₹ 84,520.00</h2>
+                    <div class="balance-info">
 
-                    <p>
-                        Available balance
-                    </p>
-
-                </div>
-
-
-                <div class="card-symbol">
-
-                    <div class="chip"></div>
-
-                    <span>NB</span>
-
-                </div>
-
-            </section>
-
-
-            <!-- QUICK ACTIONS -->
-
-            <section class="quick-section">
-
-                <div class="section-heading">
-
-                    <div>
-                        <span class="mini-label">
-                            QUICK ACTIONS
+                        <span class="balance-label">
+                            TOTAL BALANCE
                         </span>
 
-                        <h2>Manage your money</h2>
-                    </div>
+                        <h2 id="accountBalance">₹ 84,520.00</h2>
 
-                </div>
-
-
-                <div class="quick-grid">
-
-                    <button class="quick-card">
-
-                        <div class="quick-icon purple">
-                            ↗
-                        </div>
-
-                        <strong>Send Money</strong>
-
-                        <span>
-                            Transfer funds
-                        </span>
-
-                    </button>
-
-
-                    <button class="quick-card">
-
-                        <div class="quick-icon blue">
-                            ↓
-                        </div>
-
-                        <strong>Add Money</strong>
-
-                        <span>
-                            Add funds
-                        </span>
-
-                    </button>
-
-
-                    <button class="quick-card">
-
-                        <div class="quick-icon green">
-                            ◉
-                        </div>
-
-                        <strong>Pay Bills</strong>
-
-                        <span>
-                            Pay securely
-                        </span>
-
-                    </button>
-
-
-                    <button class="quick-card">
-
-                        <div class="quick-icon orange">
-                            ▤
-                        </div>
-
-                        <strong>Statements</strong>
-
-                        <span>
-                            View statements
-                        </span>
-
-                    </button>
-
-                </div>
-
-            </section>
-
-
-            <!-- TRANSACTIONS -->
-
-            <section class="transactions-section">
-
-                <div class="section-heading">
-
-                    <div>
-
-                        <span class="mini-label">
-                            ACCOUNT ACTIVITY
-                        </span>
-
-                        <h2>Recent transactions</h2>
+                        <p>
+                            Available balance
+                        </p>
 
                     </div>
 
-                    <button class="view-all">
-                        View all →
-                    </button>
+
+                    <div class="card-symbol">
+
+                        <div class="chip"></div>
+
+                        <span>NB</span>
+
+                    </div>
+
+                </section>
+
+
+                <!-- QUICK ACTIONS -->
+
+                <section class="quick-section">
+
+                    <div class="section-heading">
+
+                        <div>
+                            <span class="mini-label">
+                                QUICK ACTIONS
+                            </span>
+
+                            <h2>Manage your money</h2>
+                        </div>
+
+                    </div>
+
+
+                    <div class="quick-grid">
+
+                        <button class="quick-card" data-goto="transfers">
+
+                            <div class="quick-icon purple">
+                                ↗
+                            </div>
+
+                            <strong>Send Money</strong>
+
+                            <span>
+                                Transfer funds
+                            </span>
+
+                        </button>
+
+
+                        <button class="quick-card" data-goto="transfers">
+
+                            <div class="quick-icon blue">
+                                ↓
+                            </div>
+
+                            <strong>Add Money</strong>
+
+                            <span>
+                                Add funds
+                            </span>
+
+                        </button>
+
+
+                        <button class="quick-card" data-goto="settings">
+
+                            <div class="quick-icon green">
+                                ◉
+                            </div>
+
+                            <strong>Pay Bills</strong>
+
+                            <span>
+                                Pay securely
+                            </span>
+
+                        </button>
+
+
+                        <button class="quick-card" data-goto="transactions">
+
+                            <div class="quick-icon orange">
+                                ▤
+                            </div>
+
+                            <strong>Statements</strong>
+
+                            <span>
+                                View statements
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </section>
+
+
+                <!-- RECENT TRANSACTIONS -->
+
+                <section class="transactions-section">
+
+                    <div class="section-heading">
+
+                        <div>
+
+                            <span class="mini-label">
+                                ACCOUNT ACTIVITY
+                            </span>
+
+                            <h2>Recent transactions</h2>
+
+                        </div>
+
+                        <button class="view-all" data-goto="transactions">
+                            View all →
+                        </button>
+
+                    </div>
+
+
+                    <div class="transactions-card" id="transactionsList">
+
+                        <!--
+                            Populated dynamically by script.js from
+                            GET /api/transactions. Left empty here so the
+                            real backend data is the single source of truth.
+                        -->
+
+                    </div>
+
+                </section>
+
+
+                <!-- SESSION INFORMATION -->
+
+                <section class="session-card">
+
+                    <div>
+
+                        <span class="mini-label">
+                            CURRENT SESSION
+                        </span>
+
+                        <h3>Your banking session is active</h3>
+
+                        <p>
+                            You are currently signed in to NovaBank.
+                            Remember to log out when you are finished.
+                        </p>
+
+                    </div>
+
+                    <div class="session-status">
+
+                        <span></span>
+
+                        ACTIVE
+
+                    </div>
+
+                </section>
+
+            </div>
+
+
+            <!-- =========================
+                 TRANSFERS PAGE
+            ========================== -->
+
+            <div class="page-view hidden" id="transfersPage">
+
+                <div class="page-heading">
+                    <span class="mini-label">MOVE MONEY</span>
+                    <h2>Transfers</h2>
+                    <p>Send money securely</p>
+                </div>
+
+                <div class="page-grid">
+
+                    <section class="form-card">
+
+                        <form id="transferForm">
+
+                            <label>Recipient / Account number</label>
+                            <input
+                                type="text"
+                                id="transferRecipient"
+                                placeholder="Enter recipient name or account number"
+                                required
+                            >
+
+                            <label>Amount</label>
+                            <input
+                                type="number"
+                                id="transferAmount"
+                                placeholder="0.00"
+                                min="1"
+                                step="0.01"
+                                required
+                            >
+
+                            <label>Note (optional)</label>
+                            <input
+                                type="text"
+                                id="transferNote"
+                                placeholder="What's this for?"
+                            >
+
+                            <button type="submit" class="main-btn">
+                                Send transfer
+                                <span>→</span>
+                            </button>
+
+                            <p class="form-confirm hidden" id="transferConfirm">
+                                ✓ Transfer submitted successfully.
+                            </p>
+
+                        </form>
+
+                    </section>
+
+                    <section class="side-card">
+
+                        <div class="section-heading">
+                            <div>
+                                <span class="mini-label">HISTORY</span>
+                                <h2>Recent transfers</h2>
+                            </div>
+                        </div>
+
+                        <div class="transactions-card" id="recentTransfersList">
+                            <p style="padding:16px;">No transfers yet this session.</p>
+                        </div>
+
+                        <!--
+                            TODO (backend): once a real /api/transfers endpoint
+                            exists on the Flask backend, replace the in-memory
+                            demoTransfers array in script.js with a POST to
+                            that endpoint, and load this list from
+                            GET /api/transfers instead.
+                        -->
+
+                    </section>
 
                 </div>
 
+            </div>
 
-                <div class="transactions-card" id="transactionsList">
 
-                    <!--
-                        Populated dynamically by script.js from
-                        GET /api/transactions. Left empty here so the
-                        real backend data is the single source of truth.
-                    -->
+            <!-- =========================
+                 TRANSACTIONS PAGE
+            ========================== -->
+
+            <div class="page-view hidden" id="transactionsPage">
+
+                <div class="page-heading">
+                    <span class="mini-label">ACCOUNT ACTIVITY</span>
+                    <h2>Transactions</h2>
+                    <p>Your full transaction history</p>
+                </div>
+
+                <div class="filter-tabs" id="transactionFilters">
+
+                    <button class="filter-tab active" data-filter="all">All</button>
+                    <button class="filter-tab" data-filter="credit">Credits</button>
+                    <button class="filter-tab" data-filter="debit">Debits</button>
 
                 </div>
 
-            </section>
+                <div class="transactions-card" id="fullTransactionsList">
+                    <p style="padding:16px;">Loading transactions…</p>
+                </div>
+
+            </div>
 
 
-            <!-- SESSION INFORMATION -->
+            <!-- =========================
+                 SETTINGS PAGE
+            ========================== -->
 
-            <section class="session-card">
+            <div class="page-view hidden" id="settingsPage">
 
-                <div>
+                <div class="page-heading">
+                    <span class="mini-label">ACCOUNT</span>
+                    <h2>Settings</h2>
+                    <p>Manage your profile, security and preferences</p>
+                </div>
 
-                    <span class="mini-label">
-                        CURRENT SESSION
-                    </span>
+                <div class="settings-grid">
 
-                    <h3>Your banking session is active</h3>
+                    <!-- PROFILE -->
 
-                    <p>
-                        You are currently signed in to NovaBank.
-                        Remember to log out when you are finished.
-                    </p>
+                    <section class="form-card">
+
+                        <div class="section-heading">
+                            <div>
+                                <span class="mini-label">PROFILE</span>
+                                <h2>Account information</h2>
+                            </div>
+                        </div>
+
+                        <form id="profileForm">
+
+                            <label>Username</label>
+                            <input
+                                type="text"
+                                id="settingsUsername"
+                                disabled
+                            >
+
+                            <label>Account number</label>
+                            <input
+                                type="text"
+                                id="settingsAccountNumber"
+                                disabled
+                            >
+
+                            <!--
+                                TODO (backend): profile fields are demo-only
+                                and currently read from the session/account
+                                data already loaded by script.js. Add a
+                                PUT /api/account/profile endpoint on the
+                                Flask backend to make this editable.
+                            -->
+
+                        </form>
+
+                    </section>
+
+
+                    <!-- SECURITY -->
+
+                    <section class="form-card">
+
+                        <div class="section-heading">
+                            <div>
+                                <span class="mini-label">SECURITY</span>
+                                <h2>Change password</h2>
+                            </div>
+                        </div>
+
+                        <form id="passwordForm">
+
+                            <label>Current password</label>
+                            <input type="password" id="currentPassword" placeholder="Enter current password">
+
+                            <label>New password</label>
+                            <input type="password" id="newPassword" placeholder="Enter new password">
+
+                            <label>Confirm new password</label>
+                            <input type="password" id="confirmNewPassword" placeholder="Confirm new password">
+
+                            <button type="submit" class="main-btn">
+                                Update password
+                                <span>→</span>
+                            </button>
+
+                            <p class="form-confirm hidden" id="passwordConfirm">
+                                ✓ Password updated (demo only).
+                            </p>
+
+                        </form>
+
+                        <!--
+                            TODO (backend): wire this form to
+                            POST /api/auth/change-password once that
+                            endpoint exists. Currently demo-only so the
+                            form never touches real credentials.
+                        -->
+
+                    </section>
+
+
+                    <!-- PREFERENCES -->
+
+                    <section class="form-card">
+
+                        <div class="section-heading">
+                            <div>
+                                <span class="mini-label">PREFERENCES</span>
+                                <h2>Notifications</h2>
+                            </div>
+                        </div>
+
+                        <form id="preferencesForm">
+
+                            <label class="checkbox-row">
+                                <input type="checkbox" id="prefEmailAlerts" checked>
+                                Email me for every transaction
+                            </label>
+
+                            <label class="checkbox-row">
+                                <input type="checkbox" id="prefLoginAlerts" checked>
+                                Alert me on new sign-ins
+                            </label>
+
+                            <!--
+                                Login-alert preference is the natural hook
+                                point for the planned "AI Based Session
+                                Hijacking Detection and Prevention" system:
+                                once that service exists, this checkbox can
+                                toggle whether its alerts reach the user.
+                            -->
+
+                            <button type="submit" class="main-btn">
+                                Save changes
+                                <span>→</span>
+                            </button>
+
+                            <p class="form-confirm hidden" id="preferencesConfirm">
+                                ✓ Preferences saved (demo only).
+                            </p>
+
+                        </form>
+
+                    </section>
+
+
+                    <!-- SESSION / SECURITY INFO -->
+
+                    <section class="session-card settings-session-card">
+
+                        <div>
+                            <span class="mini-label">SESSION</span>
+                            <h3>This device's session</h3>
+                            <p>
+                                Signed in via a secure HttpOnly session
+                                cookie. Logging out here ends this session
+                                only.
+                            </p>
+                        </div>
+
+                        <div class="session-status">
+                            <span></span>
+                            ACTIVE
+                        </div>
+
+                    </section>
 
                 </div>
 
-                <div class="session-status">
-
-                    <span></span>
-
-                    ACTIVE
-
-                </div>
-
-            </section>
+            </div>
 
 
             <footer>
